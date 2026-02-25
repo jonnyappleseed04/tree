@@ -1,5 +1,5 @@
 to do:
-genetrate synthetic data (fire_hydrant)
+generate synthetic data (fire_hydrant)
 insert data into all tables
 tables following Y indicates all data successfully transfered
 
