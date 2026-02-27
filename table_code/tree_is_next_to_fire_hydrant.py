@@ -18,8 +18,8 @@ def transform_data(input_file, output_file): #transforms data into sql file
     df = pd.read_csv(input_file)
     with open(output_file, 'w') as f:
         for index, _ in enumerate(df.itertuples(), start=1):
-             query = (f"insert into fire_hydrant "
-                      f"values ({index}, {get_ran_value(min, max)});\n") #sql will catch 'null' and replace with index num
+             query = (f"insert into tree_is_next_to_fire_hydrant "
+                      f"values ({get_ran_value(min, max)}, {index});\n") #sql will catch 'null' and replace with index num
              f.write(query)
 
 transform_data(input_file, output_file)
