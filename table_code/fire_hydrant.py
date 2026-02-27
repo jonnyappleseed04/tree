@@ -4,7 +4,7 @@ import pandas as pd
 input_file = "../csv_files/fire_hydrant.csv"
 output_file = "../output_files/fire_hydrant.sql"
 
-def transform_data(input_file): #transforms data into sql file (not done)
+def transform_data(input_file, output_file): #transforms data into sql file (not done)
     df = pd.read_csv(input_file)
     with open(output_file, 'w') as f:
         for _ in df.itertuples():
