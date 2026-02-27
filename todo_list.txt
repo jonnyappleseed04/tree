@@ -7,7 +7,7 @@ insert data into all tables
 tables following Y indicates all data successfully transfered
 
 coordinates
-fire_hydrant
+fire_hydrant (done)
 location_type
 location_type_width
 neighborhood
@@ -15,7 +15,7 @@ neighborhood_address
 tree
 tree_details
 tree_details_species
-tree_is_next_to_fire_hydrant
+tree_is_next_to_fire_hydrant (working on)
 
 plan:
 output one sql file that inserts raw data
