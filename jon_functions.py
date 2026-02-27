@@ -27,10 +27,7 @@ def create_insert_query(table, values:tuple):
     return query
 
 #transforms csv data into sql file
-def transform_data(csv_file, sql_file, table):
-    # .fillna is to replace "nans" with "nulls"
-    df = pd.read_csv(csv_file).fillna("null")
-
+def transform_data(df, sql_file, table):
     with open(sql_file, 'w') as f:
         for row in df.itertuples(index=False, name=None):
             query = create_insert_query(table, row)
@@ -38,3 +35,10 @@ def transform_data(csv_file, sql_file, table):
 #endregion
 
 #for parsing csv files
+#region
+#function that returns a parsed csv file given csv file and list of columns to get
+def get_parsed_df(csv, columns_to_get:list):
+    df = pd.read_csv(csv)
+    new_df = df[columns_to_get].copy()
+    return new_df
+#endregion
