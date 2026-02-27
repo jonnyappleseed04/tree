@@ -41,4 +41,6 @@ def get_parsed_df(csv, columns_to_get:list):
     df = pd.read_csv(csv)
     new_df = df[columns_to_get].copy()
     return new_df
+
+#function to get rid of dublicate values in column
 #endregion
