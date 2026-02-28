@@ -58,24 +58,14 @@ foreign key (fk_neighborhood) references neighborhood(neighborhood_name)
 );
 
 
--- normalization table below:
-create table location_type_width(
-width float(12,9),
-size varchar(6),
-primary key (width)
-);
-
-
 create table location_type(
 location_id int ,
 site_type varchar(21),
 width float(12,9),
+size varchar(6),
 improvement varchar(13),
 wires varchar(12),
-primary key (location_id),
-foreign key (width) references location_type_width(width)
-  on update cascade
-  on delete cascade
+primary key (location_id)
 );
 
 
