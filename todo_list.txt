@@ -21,6 +21,6 @@ plan:
 output one sql file that inserts raw data
 
 order of execution:
-neighborhood.py
-neighborhood_address.py
-location_type_width
+neighborhood.sql
+neighborhood_address.sql
+location_type.sql
