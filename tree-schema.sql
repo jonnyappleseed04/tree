@@ -137,7 +137,6 @@ primary key (object_id)
 create table tree_is_next_to_fire_hydrant(
 fk_tree int,
 fk_fire_hydrant int,
--- primary key (fk_tree, fk_fire_hydrant), don't think need this
 foreign key (fk_tree) references tree(object_id)
   on update cascade
   on delete cascade,

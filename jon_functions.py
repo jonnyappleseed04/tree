@@ -26,7 +26,7 @@ def create_insert_query(table, values:tuple):
 
     return query
 
-#transforms csv data into sql file
+#transforms data frame into sql file
 def transform_data(df, sql_file, table):
     with open(sql_file, 'w') as f:
         for row in df.itertuples(index=False, name=None):
@@ -36,11 +36,11 @@ def transform_data(df, sql_file, table):
 
 #for parsing csv files
 #region
-#function that returns a parsed csv file given csv file and list of columns to get
+#function that returns a parsed data frame given csv file and list of columns to get
 def get_parsed_df(csv, columns_to_get:list):
     df = pd.read_csv(csv)
     new_df = df[columns_to_get].copy()
     return new_df
 
 #function to get rid of dublicate values in column
-#endregion
+#df.drop_duplicates()
