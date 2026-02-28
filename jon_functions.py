@@ -19,10 +19,18 @@ def create_insert_query(table, values:tuple):
     query = f"insert into {table} values("
 
     for index, value in enumerate(values, start=1):
-        if len(values) != index:
-            query += f"{value}, "
+        # for int, float, or date
+        if type(value) is int or type(value) is float or value.count("/")==2:
+            if len(values) != index:
+                query += f"{value}, "
+            else:
+                query += f"{value});\n"
+        # for string
         else:
-            query += f"{value});\n"
+            if len(values) != index:
+                query += f"\"{value}\", "
+            else:
+                query += f"\"{value}\");\n"
 
     return query
 
@@ -44,3 +52,4 @@ def get_parsed_df(csv, columns_to_get:list):
 
 #function to get rid of dublicate values in column
 #df.drop_duplicates()
+#endregion

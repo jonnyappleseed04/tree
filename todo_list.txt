@@ -19,3 +19,7 @@ tree_is_next_to_fire_hydrant (working on)
 
 plan:
 output one sql file that inserts raw data
+
+order of execution:
+neighborhood.py
+fire_hydrant.py
