@@ -1,5 +1,11 @@
 notes:
 We can combine the python files in 'table_code' into etl.py
+check note on location_type.py
+
+object_id in  location type isn't a good foreign key for coordinates
+because location_type is identified by tree
+we probably have to change it so the tree has a many-to-one
+relationship with location_type
 
 to do:
 generate synthetic data (fire_hydrant)

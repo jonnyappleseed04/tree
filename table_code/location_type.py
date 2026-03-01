@@ -6,5 +6,6 @@ output_file = "../output_files/location_type.sql"
 table = "location_type"
 columns = ["Site_Type", "Site_Width", "Site_Size", "SITE_IMPROVEMENT", "Wires"]
 
+#note: don't know why getting rid of duplicate rows reduces it so much
 transfer_data(input_file, output_file, table, columns_to_get=columns,
               auto_increment=True)
