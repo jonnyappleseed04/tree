@@ -32,4 +32,10 @@ cleaned_coordinates =  raw_coordinates.drop(columns_2, axis=1)
 # result = cleaned_coordinates['object_id']
 # result_m = result.drop_duplicates()
 
+#check for duplicate composite key
+# duplicates = cleaned_coordinates[cleaned_coordinates.duplicated(
+#     subset=['X', 'Y'], keep=False)]
+#has a couple of duplicates so I'm going to clean data
+cleaned_coordinates.drop_duplicates(inplace=True)
+
 transform_data(cleaned_coordinates, output_file, table)

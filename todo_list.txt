@@ -1,6 +1,7 @@
 notes: 252204
 We can combine the python files in 'table_code' into etl.py
-check note on location_type.py
+composite key for coordinates have duplicate entry
+(showing error when I put into query)
 
 object_id in  location type isn't a good foreign key for coordinates
 because location_type is identified by tree
@@ -30,3 +31,4 @@ order of execution:
 neighborhood.sql
 neighborhood_address.sql
 location_type.sql
+coordinates
