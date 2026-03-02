@@ -4,7 +4,32 @@ from jon_functions import *
 input_file = "../csv_files/tree_inventory.csv"
 output_file = "../output_files/coordinates.sql"
 table = "coordinates"
-columns = ["X", "Y", "Neighborhood", ]
+columns = ["X", "Y", "Neighborhood",
+        "Site_Type", "Site_Width", "Site_Size",
+           "SITE_IMPROVEMENT", "Wires"]
 
-#note: don't know why getting rid of duplicate rows reduces it so much
-transfer_data(input_file, output_file, table, columns_to_get=columns,)
+#get df of location_type
+columns_2 = ["Site_Type", "Site_Width", "Site_Size", "SITE_IMPROVEMENT", "Wires"]
+parsed_location_type = get_parsed_df(input_file, columns_2)
+cleaned_location_type = parsed_location_type.drop_duplicates()
+#adds object_ID
+object_id = 1
+cleaned_location_type.insert(0, 'object_id',
+                range(object_id, object_id+len(cleaned_location_type)))
+
+#create df w/ coordinates + Neighborhood + columns_2
+raw_data = get_parsed_df(input_file, columns)
+
+#join
+raw_coordinates = raw_data.merge(
+    cleaned_location_type[columns_2 +['object_id']], #only pulls object_id
+    on= columns_2,
+    how='left'
+)
+cleaned_coordinates =  raw_coordinates.drop(columns_2, axis=1)
+#this code checks that all foreign keys (object_id)
+#has a reference
+# result = cleaned_coordinates['object_id']
+# result_m = result.drop_duplicates()
+
+transform_data(cleaned_coordinates, output_file, table)

@@ -1,5 +1,6 @@
 #this is just temporary file to store my functions
 #ik this is kinda messy rn
+import duckdb
 import pandas as pd
 import random
 #for data generation
@@ -61,6 +62,10 @@ def get_parsed_df(csv, columns_to_get:list):
 #Specificy columns that are not null
 #using their index in the list"
 #note: not null may not be necessary as line 10718 is the limit of csv viewer
+
+#function that converts csv file into parsed df,
+#drops redundant rows, adds auto_increment column,
+#and converts df to sql queries
 def transfer_data(input_csv_file_path:str, output_sql_file_path:str,
                   table_name:str, columns_to_get:list = False, not_null:list = False, auto_increment = False):
     #parse data if necessary
@@ -90,3 +95,4 @@ def transfer_data(input_csv_file_path:str, output_sql_file_path:str,
     transform_data(cleaned_df, output_sql_file_path, table_name)
 
 #endregion
+

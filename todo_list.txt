@@ -1,4 +1,4 @@
-notes:
+notes: 252204
 We can combine the python files in 'table_code' into etl.py
 check note on location_type.py
 
