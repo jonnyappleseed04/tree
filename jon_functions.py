@@ -8,7 +8,7 @@ import random
 #create function that generates ran num between 1 and 252205 or null
 def get_ran_value(min, max, null_prob=.5):
     if random.random() < null_prob:
-        return "null"
+        return None
     else:
         return random.randint(min, max)
 #endregion
@@ -20,13 +20,21 @@ def create_insert_query(table, values:tuple):
     query = f"insert into {table} values("
 
     for index, value in enumerate(values, start=1):
-        # for int, float, null or date
+        # for int, float, null
         if (type(value) is int or type(value) is float
-                or value.count("/")==2 or value == "null"):
+                or value == "null"):
             if len(values) != index:
                 query += f"{value}, "
             else:
                 query += f"{value});\n"
+        #date note: gets rid of timestamp bc I thought it was
+        #irrelevant
+        elif value.count("/")==2:
+            mod_value = value.split(" ", 1)[0]
+            if len(values) != index:
+                query += f"\"{mod_value}\", "
+            else:
+                query += f"\"{mod_value}\");\n"
         # for string
         else:
             if len(values) != index:
@@ -82,8 +90,7 @@ def transfer_data(input_csv_file_path:str, output_sql_file_path:str,
     if not_null:
         #new list with only not null columns
         not_null_columns = [columns_to_get[index] for index in not_null]
-        for columns in not_null_columns:
-            cleaned_df = cleaned_df[~cleaned_df[columns] == 'null']
+        cleaned_df = cleaned_df[~cleaned_df[not_null_columns].eq("null").any(axis=1)]
 
     #add auto_increment column
     if auto_increment:
