@@ -1,6 +1,7 @@
 notes: 252204
 We can combine the python files in 'table_code' into etl.py
 changed floats to decimal
+process time is about 1 min
 
 gotta put composite primary keyy in tree_is_next_to_fire_hydrant
 
