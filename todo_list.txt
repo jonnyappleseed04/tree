@@ -36,3 +36,5 @@ coordinates
 tree
 fire_hydrant
 tree_is_next_to_fire_hydrant
+tree_details_species
+tree_details
