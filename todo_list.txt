@@ -1,7 +1,6 @@
 notes: 252204
 We can combine the python files in 'table_code' into etl.py
-composite key for coordinates have duplicate entry
-(showing error when I put into query)
+changed floats to decimal
 
 object_id in  location type isn't a good foreign key for coordinates
 because location_type is identified by tree

@@ -61,7 +61,7 @@ foreign key (fk_neighborhood) references neighborhood(neighborhood_name)
 create table location_type(
 location_id int ,
 site_type varchar(21),
-width float(12,9),
+width decimal(12,9),
 size varchar(6),
 improvement varchar(13),
 wires varchar(12),
@@ -70,8 +70,8 @@ primary key (location_id)
 
 
 create table coordinates(
-x float(13,4),
-y float(11,4),
+x decimal(13,4),
+y decimal(11,4),
 primary key (x, y),
 fk_neighborhood varchar(23),
 fk_location_type int not null, -- for many-to-one. not null bc location type is required.
@@ -87,8 +87,8 @@ foreign key (fk_location_type) references location_type(location_id)
 create table tree(
 object_id int auto_increment,
 date_inventoried date,
-fk_coordinates_x float(13,4),
-fk_coordinates_y float(11,4),
+fk_coordinates_x decimal(13,4),
+fk_coordinates_y decimal(11,4),
 primary key (object_id),
 foreign key (fk_coordinates_x, fk_coordinates_y) references coordinates(x, y)
   on update cascade
@@ -106,7 +106,7 @@ primary key (species)
 
 create table tree_details(
 mature_size varchar(7),
-diameter float(11,9),
+diameter decimal(11,9),
 item_condition varchar(9),
 species varchar(79),
 fk_tree int,
