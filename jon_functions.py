@@ -1,6 +1,5 @@
 #this is just temporary file to store my functions
 #ik this is kinda messy rn
-import duckdb
 import pandas as pd
 import random
 #for data generation
