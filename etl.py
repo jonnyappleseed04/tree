@@ -1,4 +1,7 @@
 #Amelia & Jonathan
+#BEFORE RUNNING:
+#1. Create two directories named "csv_files" and "output_files"
+#2. Put "tree_inventory.csv" in "csv_files"
 from functions import *
 from pathlib import Path
 #generate data
