@@ -1,6 +1,6 @@
 #create csv file that generates columns
 #in tree_is_next_to_fire_hydrant
-from jon_functions import *
+from functions import *
 import pandas as pd
 min = 1
 max = 252205

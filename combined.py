@@ -1,5 +1,5 @@
 
-from jon_functions import *
+from functions import *
 from pathlib import Path
 #generate data
 #region

@@ -1,5 +1,5 @@
 #Goal: create sql file that inserts fire_hydrants... in fire_hydrant... table
-from jon_functions import *
+from functions import *
 #.. = one level up
 input_file = "../csv_files/tree_is_next_to_fire_hydrant.csv"
 output_file = "../output_files/tree_is_next_to_fire_hydrant.sql"

@@ -1,5 +1,5 @@
 #Goal: insert relevant data into table
-from jon_functions import *
+from functions import *
 input_file = "../csv_files/tree_inventory.csv"
 output_file = "../output_files/neighborhood_address.sql"
 table = "neighborhood_address"
