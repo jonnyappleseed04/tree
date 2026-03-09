@@ -1,12 +1,14 @@
 import pandas as pd
 import random
 #region
-def get_ran_value(min, max, null_prob=.5):
+def get_ran_value(min, max, count, null_prob=.5):
     """Generates random number between min and max or null"""
-    if random.random() < null_prob:
-        return None
-    else:
-        return random.randint(min, max)
+    random.seed(42)
+    random_list = random.sample(range(min, max), count)
+    for i in range(len(random_list)):
+        if random.random() < null_prob:
+            random_list[i] = None
+    return random_list
 #endregion
 
 #region

@@ -28,15 +28,14 @@ min_ = 1
 max_ = 252205
 
 #prep data
-fk_fire_hydrant =[]
+fire_hydrant_object_id =[]
 for i in range(1,10001):
-    fk_fire_hydrant.append(i)
+    fire_hydrant_object_id.append(i)
 
-fk_tree = []
-for _ in fk_fire_hydrant:
-    fk_tree.append(get_ran_value(min_, max_))
+fk_tree = get_ran_value(min_, max_, 10000)
 
-tree_is_next_to_fire_hydrant = {"fk_fire_hydrant": fk_fire_hydrant,
+
+tree_is_next_to_fire_hydrant = {"fk_fire_hydrant": fire_hydrant_object_id,
                                 "fk_tree": fk_tree}
 #write
 df = pd.DataFrame(tree_is_next_to_fire_hydrant)
