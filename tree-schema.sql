@@ -1,6 +1,6 @@
 /*
 tree database
-version 1.0
+version 2.0
 date 2/23/2026
 authors: Amelia, Jonathan
 */
