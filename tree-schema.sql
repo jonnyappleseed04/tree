@@ -120,6 +120,7 @@ foreign key (species) references tree_details_species (species)
 
 create table fire_hydrant(
 object_id int auto_increment,
+color VARCHAR(6),
 primary key (object_id)
 );
 
