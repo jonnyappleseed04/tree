@@ -4,7 +4,7 @@ import random
 def get_ran_value(min, max, count, null_prob=.5):
     """Returns a list with count entries of random numbers between min and max or null"""
     random.seed(42)
-    random_list = random.sample(range(min, max), count)
+    random_list = random.choices(range(min, max), k=count)
     for i in range(len(random_list)):
         if random.random() < null_prob:
             random_list[i] = None
