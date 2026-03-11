@@ -11,10 +11,12 @@ from pathlib import Path
 #-----Generate fire_hydrant_data-----
 #region
 #prep data
-list_ =[]
-for i in range(1,10001):
-    list_.append(i)
-fire_hydrant = {"object_id": list_}
+fh_object_ids=[i for i in range(1,10001)]
+random.seed(42)
+fh_colors=['red' if random.random()<0.7 else 'orange' for _ in range(10000)]
+
+fire_hydrant = {"object_id": fh_object_ids,
+                "color":fh_colors}
 
 df = pd.DataFrame(fire_hydrant)
 file_path = 'csv_files/fire_hydrant.csv'
