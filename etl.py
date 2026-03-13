@@ -112,7 +112,7 @@ transform_data(cleaned_coordinates, output_file, table)
 #-----tree_basic
 #region
 input_file = "csv_files/tree_inventory.csv"
-output_file = "output_files/tree.sql"
+output_file = "output_files/tree_basic.sql"
 table = "tree_basic"
 columns = ["OBJECTID","Date_Inventoried","X","Y"]
 
