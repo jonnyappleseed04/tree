@@ -109,11 +109,11 @@ cleaned_coordinates.drop_duplicates(inplace=True)
 transform_data(cleaned_coordinates, output_file, table)
 #endregion
 
-#-----tree
+#-----tree_basic
 #region
 input_file = "csv_files/tree_inventory.csv"
 output_file = "output_files/tree.sql"
-table = "tree"
+table = "tree_basic"
 columns = ["OBJECTID","Date_Inventoried","X","Y"]
 
 transfer_data(input_file, output_file, table,

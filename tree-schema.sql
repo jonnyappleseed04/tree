@@ -84,7 +84,7 @@ foreign key (fk_location_type) references location_type(location_id)
 );
 
 
-create table tree(
+create table tree_basic(
 object_id int auto_increment,
 date_inventoried date,
 fk_coordinates_x decimal(13,4),
@@ -111,7 +111,7 @@ item_condition varchar(9),
 species varchar(79),
 fk_tree int,
 primary key (fk_tree), -- SINGULAR weak table's foreign is also the primary key
-foreign key (fk_tree) references tree(object_id)
+foreign key (fk_tree) references tree_basic(object_id)
   on update cascade
   on delete cascade,
 foreign key (species) references tree_details_species (species)
@@ -129,7 +129,7 @@ create table tree_is_next_to_fire_hydrant(
 fk_tree int,
 fk_fire_hydrant int,
 primary key (fk_tree, fk_fire_hydrant),
-foreign key (fk_tree) references tree(object_id)
+foreign key (fk_tree) references tree_basic(object_id)
   on update cascade
   on delete cascade,
 foreign key (fk_fire_hydrant) references fire_hydrant(object_id)
