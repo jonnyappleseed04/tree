@@ -1,5 +1,5 @@
 #Amelia & Jonathan
-#version 1.0
+#version 2.0
 #BEFORE RUNNING:
 #1. Create two directories named "csv_files" and "output_files"
 #2. Put "tree_inventory.csv" in "csv_files"
@@ -169,12 +169,20 @@ transfer_data(input_file, output_file, table,
 #region
 folder_path = Path("output_files")
 output_file = "combined_queries.sql"
+start_commands = ("set autocommit = 0;\n"
+                  "set unique_checks = 0;\n"
+                  "set foreign_key_checks = 0;\n")
+end_commands = ("set autocommit = 1;\n"
+                "set unique_checks = 1;\n"
+                "set foreign_key_checks = 1;\n")
 
 files = sorted(folder_path.glob("*.sql"),
                key=lambda f: f.stat().st_mtime)
 
 with open(output_file, "w") as outfile:
+    outfile.write(start_commands)
     for file_path in files:
         with open(file_path, "r") as infile:
             outfile.write(infile.read() + "\n")
+    outfile.write(end_commands)
 #endregion

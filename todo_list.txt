@@ -1,41 +1,8 @@
 notes: 252204
-We can combine the python files in 'table_code' into etl.py
-changed floats to decimal
-process time is about 1 min
 
-gotta put composite primary keyy in tree_is_next_to_fire_hydrant
+combined_queries.sql takes approx 55 sec to write
+with professor changes: approx 30 sec
 
-object_id in  location type isn't a good foreign key for coordinates
-because location_type is identified by tree
-we probably have to change it so the tree has a many-to-one
-relationship with location_type
-
-to do:
-generate synthetic data (fire_hydrant)
-insert data into all tables
-tables following Y indicates all data successfully transfered
-
-coordinates
-fire_hydrant (done)
-location_type
-location_type_width
-neighborhood
-neighborhood_address
-tree
-tree_details
-tree_details_species
-tree_is_next_to_fire_hydrant
-
-plan:
-output one sql file that inserts raw data
-
-order of execution:
-neighborhood.sql
-neighborhood_address.sql
-location_type.sql
-coordinates
-tree
-fire_hydrant
-tree_is_next_to_fire_hydrant
-tree_details_species
-tree_details
+reminders:
+update documents
+append professor comments to .sql file
