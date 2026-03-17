@@ -4,5 +4,5 @@ combined_queries.sql takes approx 55 sec to write
 with professor changes: approx 30 sec
 
 reminders:
-update documents
-append professor comments to .sql file
+update documents x
+append professor comments to .sql file x
