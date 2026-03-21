@@ -1,0 +1,12 @@
+Get tree with specific object id
+Get tree where neighborhood is SELLWOOD-MORELAND and on a strip
+Top ten neighborhoods with most trees
+add tree
+sort all trees in specific neighborhood by object_id & date_inventoried
+Count fire hydrants in each neighborhood
+How many trees are in _____ section of coordinates
+Get all trees that are next to fire_hydrant
+Get all fire_hydrants that are next to multiple trees
+Create a view table that lists all attributes in tree_basic and tree_details
+Add fire_hydrant row
+Delete fire_hydrant row

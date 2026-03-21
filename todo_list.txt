@@ -6,3 +6,91 @@ with professor changes: approx 30 sec
 reminders:
 update documents x
 append professor comments to .sql file x
+
+jon queries (everything works i think)
+
+-- Count fire hydrants in each neighborhood (work on
+
+select neighborhood_name as neighborhood, count(*) as num_fire_hydrants
+from neighborhood
+inner join coordinates
+on fk_neighborhood = neighborhood_name
+inner join tree_basic
+on fk_coordinates_x = x and fk_coordinates_y = y
+inner join tree_is_next_to_fire_hydrant
+on fk_tree = object_id
+group by neighborhood_name;
+
+create view test
+as select neighborhood_name as neighborhood, count(*) as num_fire_hydrants
+from neighborhood
+inner join coordinates
+on fk_neighborhood = neighborhood_name
+inner join tree_basic
+on fk_coordinates_x = x and fk_coordinates_y = y
+inner join tree_is_next_to_fire_hydrant
+on fk_tree = object_id
+group by neighborhood_name;
+
+-- How many trees are in _____ section of coordinates
+	select object_id as tree, x, y, neighborhood_name as neighborhood
+	from tree_basic
+	join coordinates
+	on fk_coordinates_x = x and fk_coordinates_y = y
+	join neighborhood
+	on fk_neighborhood = neighborhood_name
+	where (x between (select min(x) from coordinates)
+	            and (select min(x)+10000 from coordinates)) -- range can be changed
+	and (y between (select min(y) from coordinates)
+	          and (select min(y)+10000 from coordinates)) -- same here
+	order by x;
+
+--create view that gets min, max, and range of x and y
+    create view coordinates_view
+	as select min(x) as min_x, max(x) as max_x, max(x)-min(x) as range_x, min(y) as min_y, max(y) as max_y, max(y)-min(y) as range_y
+	from coordinates;
+
+-- Get all trees that are next to multiple fire hydrants and list the coordinates
+-- and the neighborhood for that tree
+select object_id as tree, x, y, neighborhood_name, count(*) as fire_hydrants
+from coordinates
+inner join neighborhood
+on fk_neighborhood = neighborhood_name
+inner join tree_basic
+on fk_coordinates_x = x and fk_coordinates_y = y
+inner join tree_is_next_to_fire_hydrant
+on object_id = fk_tree
+group by fk_tree
+having fire_hydrants != 1;
+
+
+-- Create a view table that lists all attributes in tree_basic and tree_details
+create view tree_info
+as select object_id, date_inventoried, fk_coordinates_x as x,
+fk_coordinates_y as y, mature_size, diameter, item_condition, species
+from tree_basic, tree_details
+where fk_tree = object_id;
+
+-- Add fire_hydrant row
+INSERT INTO fire_hydrant (color)
+VALUES ('orange');
+
+-- Delete fire_hydrant row
+DELETE FROM fire_hydrant
+WHERE object_id = (select max(object_id) from fire_hydrant);
+
+
+-- add tree
+	Insert into tree_basic (date_inventoried)
+	values('2026/03/16');
+
+--sort trees in specific neighborhood by object id & date inventoried
+
+select neighborhood_name, object_id, date_inventoried
+from neighborhood
+inner join coordinates
+on fk_neighborhood = neighborhood_name
+inner join tree_basic
+on fk_coordinates_x = x and fk_coordinates_y = y
+where neighborhood_name = ' Crestwood'
+order by object_id, date_inventoried;
