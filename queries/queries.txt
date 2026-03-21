@@ -1,3 +1,5 @@
+-- version 1.0
+
 -- Get tree with specific object id
 use tree;
 select *
@@ -64,7 +66,7 @@ order by x;
 	use tree;
 create view coordinates_view
 as select min(x) as min_x, max(x) as max_x, max(x)-min(x) as range_x, min(y) as min_y, max(y) as max_y, max(y)-min(y) as range_y
-	from coordinates
+	from coordinates;
 
 -- Get all trees that are next to multiple fire hydrants and list the coordinates and the neighborhood for that tree
 use tree;
@@ -90,10 +92,10 @@ where fk_tree = object_id;
 
 -- Add fire_hydrant row
 use tree;
-INSERT INTO fire_hydrant (color)
-VALUES ('orange');
+insert into fire_hydrant (color)
+values ('orange');
 
 -- Delete fire_hydrant row
 use tree;
-DELETE FROM fire_hydrant
+delete from fire_hydrant
 WHERE object_id = (select max(object_id) from fire_hydrant);
