@@ -37,7 +37,7 @@ on fk_coordinates_x = x and fk_coordinates_y = y
 where neighborhood_name = 'Crestwood'
 order by object_id, date_inventoried;
 
--- Count fire hydrants in each neighborhood
+-- Count fire hydrants (next to tree) in each neighborhood
 	use tree;
 select fk_neighborhood, count(*)
 from tree_basic
