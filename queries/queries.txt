@@ -1,0 +1,99 @@
+-- Get tree with specific object id
+use tree;
+select *
+from tree_basic
+where object_id = 69830;
+
+-- Get tree where neighborhood is SELLWOOD-MORELAND and on a median
+use tree;
+select tree_basic.object_id, fk_neighborhood, site_type
+from tree_basic
+join coordinates on tree_basic.fk_coordinates_x = coordinates.x and tree_basic.fk_coordinates_y = coordinates.y
+join location_type on fk_location_type = location_id
+where fk_neighborhood = "SELLWOOD-MORELAND" and site_type = "Median";
+
+-- Top ten neighborhoods with most trees
+use tree;
+select neighborhood_name, count(*) as tree_num
+from neighborhood, coordinates
+where neighborhood_name = fk_neighborhood
+group by neighborhood_name
+order by tree_num desc
+limit 10;
+
+-- add tree (note: this has an error bc of the font)
+use tree;
+Insert into tree_basic (date_inventoried)
+values('2026/03/16');
+
+-- sort all trees in a specific neighborhood (Crestwood) by object_id & date_inventoried
+use tree;
+select neighborhood_name, object_id, date_inventoried
+from neighborhood
+join coordinates
+on fk_neighborhood = neighborhood_name
+inner join tree_basic
+on fk_coordinates_x = x and fk_coordinates_y = y
+where neighborhood_name = 'Crestwood'
+order by object_id, date_inventoried;
+
+-- Count fire hydrants in each neighborhood
+	use tree;
+select fk_neighborhood, count(*)
+from tree_basic
+join coordinates on tree_basic.fk_coordinates_x = coordinates.x and tree_basic.fk_coordinates_y = coordinates.y
+join tree_is_next_to_fire_hydrant on tree_basic.object_id = tree_is_next_to_fire_hydrant.fk_tree
+GROUP BY fk_neighborhood;
+
+-- How many trees are in min value of x and y and min + 10000 of x and y section of coordinates
+use tree;
+select object_id as tree, x, y, neighborhood_name as neighborhood
+from tree_basic
+join coordinates
+on fk_coordinates_x = x and fk_coordinates_y = y
+join neighborhood
+on fk_neighborhood = neighborhood_name
+where (x between (select min(x) from coordinates)
+           and (select min(x)+10000 from coordinates)) -- range can be changed
+and (y between (select min(y) from coordinates)
+         and (select min(y)+10000 from coordinates)) -- same here
+order by x;
+
+
+-- Create view that gets min, max, and range of x and y
+	use tree;
+create view coordinates_view
+as select min(x) as min_x, max(x) as max_x, max(x)-min(x) as range_x, min(y) as min_y, max(y) as max_y, max(y)-min(y) as range_y
+	from coordinates
+
+-- Get all trees that are next to multiple fire hydrants and list the coordinates and the neighborhood for that tree
+use tree;
+select object_id as tree, x, y, neighborhood_name, count(*) as fire_hydrants
+from coordinates
+join neighborhood
+on fk_neighborhood = neighborhood_name
+inner join tree_basic
+on fk_coordinates_x = x and fk_coordinates_y = y
+inner join tree_is_next_to_fire_hydrant
+on object_id = fk_tree
+group by fk_tree
+having fire_hydrants != 1;
+
+
+-- Create a view table that lists all attributes in tree_basic and tree_details
+use tree;
+create view tree_info
+as select object_id, date_inventoried, fk_coordinates_x as x,
+fk_coordinates_y as y, mature_size, diameter, item_condition, species
+from tree_basic, tree_details
+where fk_tree = object_id;
+
+-- Add fire_hydrant row
+use tree;
+INSERT INTO fire_hydrant (color)
+VALUES ('orange');
+
+-- Delete fire_hydrant row
+use tree;
+DELETE FROM fire_hydrant
+WHERE object_id = (select max(object_id) from fire_hydrant);
