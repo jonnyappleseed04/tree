@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>HTML Notes</title>
+    </head>
+    <body>
+<table border="0" width="1400">
+    <tr><td valign="top"><!--------------------------Left Side------------------------->
+
+        <pre>
+Start with:
+<br>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+    &lt;head&gt;
+        &lt;meta charset="UTF-8"&gt;
+        &lt;title&gt;Page Title&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        Page Content
+    &lt;/body&gt;
+&lt;/html&gt;
+        </pre>
+        <h1>&lt;h1&gt;</h1>
+        <h2>&lt;h2&gt;</h2>
+        <h3>&lt;h3&gt;</h3>
+        <h4>&lt;h4&gt;</h4>
+        <h5>&lt;h5&gt;</h5>
+        <h6>&lt;h6&gt;</h6>
+        <pre>&amp;lt;&amp;gt;= &lt;&gt;</pre>
+        &lt;br&gt; breaks line
+        <br>&lt;p&gt; makes a new paragraph
+        <br><strong>&lt;strong&gt;</strong> and
+        <b>&lt;b&gt;</b> make bold
+        <br><em>&lt;em&gt;</em> and
+        <i>&lt;i&gt;</i> make italics
+        <br>&lt;img src="link_to_image" alt="image_description"&gt; makes an image
+        <br>&lt;a href="link"&gt;Here&lt;/a&gt; makes a hyperlink by clicking on "Here"
+        <br>&lt;!--Comment--&gt;
+        <br><mark>&lt;mark&gt;</mark>
+
+    </td><td valign="top"><!-------------------------Right Side------------------------>
+
+        <br>Unordered List:
+        <pre>
+&lt;ul&gt;
+    &lt;li&gt;One&lt;/li&gt;
+    &lt;li&gt;Two&lt;/li&gt;
+    &lt;li&gt;Three&lt;/li&gt;
+&lt;/ul&gt;
+        </pre>
+        Numbered List: &lt;ol type="1"&gt;&lt;/ol&gt;
+        <br>Uppercase Letters: &lt;ol type="A"&gt;&lt;/ol&gt;
+        <br>Lowercase Letters: &lt;ol type="a"&gt;&lt;/ol&gt;
+        <br>Uppercase Roman Numerals: &lt;ol type="I"&gt;&lt;/ol&gt;
+        <br>Lowercase Roman Numerals: &lt;ol type="i"&gt;&lt;/ol&gt;
+        <br>Square: &lt;ul style="list-style-type:square"&gt;
+        <br>Greek Letters:&lt;ol style="list-style-type:lower-greek"&gt;
+        <br>Lists can be inside lists.
+       
+        <table border="1">
+            <caption>&lt;caption&gt;Caption&lt;/caption&gt;</caption>
+            <tr>
+                <th></th>
+                <th>&lt;th&gt;Column1&lt;/th&gt;</th>
+                <th>Column2</th>
+                <th>Column3</th>
+            </tr>
+            <tr>
+                <th>Row1</th>
+                <td><table border="1"> 
+                    <tr>
+                        <th></th>
+                        <th>Tableception</th>
+                    </tr>
+                    <tr>
+                        <th>Tableception</th>
+                        <td>Wow</td>
+                    </tr>
+                </table></td>
+                <td>Info2</td>
+                <td rowspan="2">Rowspan</td>
+            </tr>
+            <tr>
+                <th>Row2</th>
+                <td>&lt;td&gt;Info3&lt;/td&gt;</td>
+                <td>Info4</td>
+            </tr>
+            <tr>
+                <th>Row3</th>
+                <td colspan="3">Colspan</td>
+            </tr>
+        </table>
+    </td></tr>
+
+    <tr><td valign="top"><!--------------------------Left Side------------------------->
+        <h1>CSS in HTML</h1>
+        Ex:
+        <p>&lt;p style="color:pink"&gt; <span style="color:pink"> This is pink</span>&lt;/p&gt;</p>
+        
+        &lt;style&gt; p{color:pink} &lt;/style&gt;
+        <br> &lt;p&gt;<span style="color:pink"> Paragraphs are pink </span>&lt;/p&gt;</br>
+        
+        <p>&lt;span style="color:pink"&gt; <span style="color:pink">Only this is pink</span> &lt;/span&gt;</p>
+        
+        Refer to a style in another file:
+        <br> &lt;link href="styles.css" rel="stylesheet"&gt;
+
+        <p>&lt;style&gt; p > strong {color:pink} &lt;/style&gt;
+        <br> &lt;p&gt;Only &lt;span&gt;<strong style="color:pink">bold</strong>&lt;/span&gt;in paragraphs are pink &lt;/p&gt;</br></p>
+        <p>
+            font-family, font-size, font-weight, font-style, font-variant 
+            <br>text-align, text-decoration, text-transform, text-indent
+            <br>content, padding, border, margin
+        </p>
+        
+
+
+
+
+    </td><td valign="top"><!--------------------------Right Side------------------------->
+
+
+
+
+    </td></tr>
+
+</table>
+   </body>
+</html>
