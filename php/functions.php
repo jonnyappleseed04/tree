@@ -4,10 +4,10 @@
     error_reporting(E_ALL);
 
     function db_connect() {
-        define('DB_USER', 'registrar');
+        define('DB_USER', 'tree');
         define('DB_PASSWORD', '');
         define('DB_HOST', 'localhost');
-        define('DB_NAME', 'registrar');
+        define('DB_NAME', 'tree');
 
         ($dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME))
         || die('Could not connect to MariaDB: ' . mysqli_connect_error());
@@ -74,4 +74,22 @@
         }
 
     }
+    function db_do_query($dbc, $input){
+        echo $input;
+        $query = $input;
+        $response = mysqli_query($dbc, $query);
+        if ($response) {
+        $arr = [];
+        while ($row = mysqli_fetch_array($response)) {
+            array_push($arr, $row);
+        }
+        return $arr;
+        }
+        else {
+        die('Couldn\'t issue database query: ' . mysqli_error($dbc));
+        }
+
+    }
+
+
 ?>
