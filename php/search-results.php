@@ -16,11 +16,12 @@
     echo '<table>';
     echo '<tr><td><b>Name</b></td></tr>';
     foreach ($result as $row) {
+      echo '<tr>';
+
       for ($column = 0; $column<count($row)-2;$column +=1){
-        echo '<tr>';
         echo '<td>' . $row[$column] . '</td>';
-        echo '</tr>';
       }
+      echo '</tr>';
     }
 
     echo '</table>';
