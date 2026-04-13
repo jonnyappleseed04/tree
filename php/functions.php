@@ -161,7 +161,10 @@
             "12" => "delete from fire_hydrant
                     where object_id = (select max(object_id) from fire_hydrant);"
         ];
-        return $queries[$selection];
+        if (in_array($selection,$queries)){
+            return $queries[$selection];
+        }
+        return $selection;
     }
 
 

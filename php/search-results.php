@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -16,7 +15,8 @@
     $dbc = db_connect();
 
     $selection = $_GET['query'];
-
+    
+    echo $selection;
     //transform selection to query
     $query = transform_selection($selection);
     $result = db_do_query($dbc,$query);
@@ -25,7 +25,7 @@
         <a href=index.html>&larr;</a>
         to go back </p>';
     echo '<p> Your query: ' . $query . '</p>';
-    echo '<h2>'. 'results' . '</h2>';
+    echo '<h2>'. 'Results' . '</h2>';
 
     //for data
     //for update, deletes
