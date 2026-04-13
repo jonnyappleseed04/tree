@@ -1,62 +1,61 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Search</title>
-    <link rel="stylesheet" href="styles.css">
-  </head>
-  <body>
 
-    <label>Select a query: </label>
+<head>
+  <title>Search</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
 
-    <form action="search-results.php" method="GET">
-        <!-- action specifies where input is being
-        sent to. -->
-      <input type="radio" name="query"
-      id="q1" value="1">
-        <label for="q1">get tree with specific object id</label><br>
-      <input type="radio" name="query"
-      id="q2" value="2">
-        <label for="q2">Get tree where neighborhood is SELLWOOD-MORELAND and on a median</label><br>
-      <input type="radio" name="query"
-      id="q3" value="3">
-        <label for="q3">Top ten neighborhoods with most trees</label><br>
-      <input type="radio" name="query"
-      id="q4" value="4">
-        <label for="q4">add tree</label><br>
-      <input type="radio" name="query"
-      id="q5" value="5">
-        <label for="q5">sort all trees in a specific neighborhood (Crestwood) by object_id & date_inventoried</label><br>
-      <input type="radio" name="query"
-      id="q6" value="6">
-        <label for="q6">Count fire hydrants (next to tree) in each neighborhood</label><br>
-      <input type="radio" name="query"
-      id="q7" value="7">
-        <label for="q7">How many trees are in min value of x and y and min + 10000 of x and y section of coordinates</label><br>
-      <input type="radio" name="query"
-      id="q8" value="8">
-        <label for="q8">Create view that gets min, max, and range of x and y</label><br>
-      <input type="radio" name="query"
-      id="q9" value="9">
-        <label for="q9">Get all trees that are next to multiple fire hydrants and list the coordinates and the neighborhood for that tree</label><br>
-      <input type="radio" name="query"
-      id="q10" value="10">
-        <label for="q10">Create a view table that lists all attributes in tree_basic and tree_details</label><br>
-      <input type="radio" name="query"
-      id="q11" value="11">
-        <label for="q11">Add fire_hydrant row</label><br>
-      <input type="radio" name="query"
-      id="q12" value="12">
-        <label for="q12">Delete fire_hydrant row</label><br>
-      <input type="submit"
-             value="Submit">
-    </form>
+<body>
 
-    <br>
-    <label>or...</label>
-    <br>
-    <label>Enter your own query:</label>
-    <form action='custom-results.php' method='GET'>
-      <input type='text' name='custom_string'>
-    </form>
-  </body>
+  <label>Select a query: </label>
+
+  <form action="search-results.php" method="GET" id = "radio_form">
+    <!-- action specifies where input is being sent to. -->
+    <input type="radio" name="query" id="q1" value="1">
+    <label for="q1">Get tree with object id 69830</label><br>
+    <input type="radio" name="query" id="q2" value="2">
+    <label for="q2">Get tree where neighborhood is SELLWOOD-MORELAND and on a median</label><br>
+    <input type="radio" name="query" id="q3" value="3">
+    <label for="q3">Top ten neighborhoods with most trees</label><br>
+    <input type="radio" name="query" id="q4" value="4">
+    <label for="q4">add tree</label><br>
+    <input type="radio" name="query" id="q5" value="5">
+    <label for="q5">sort all trees in a specific neighborhood (Crestwood) by object_id & date_inventoried</label><br>
+    <input type="radio" name="query" id="q6" value="6">
+    <label for="q6">Count fire hydrants (next to tree) in each neighborhood</label><br>
+    <input type="radio" name="query" id="q7" value="7">
+    <label for="q7">How many trees are in min value of x and y and min + 10000 of x and y section of coordinates</label><br>
+    <input type="radio" name="query" id="q8" value="8">
+    <label for="q8">Create view that gets min, max, and range of x and y</label><br>
+    <input type="radio" name="query" id="q9" value="9">
+    <label for="q9">Get all trees that are next to multiple fire hydrants and list the coordinates and the neighborhood for that tree</label><br>
+    <input type="radio" name="query" id="q10" value="10">
+    <label for="q10">Create a view table that lists all attributes in tree_basic and tree_details</label><br>
+    <input type="radio" name="query" id="q11" value="11">
+    <label for="q11">Add fire_hydrant row</label><br>
+    <input type="radio" name="query" id="q12" value="12">
+    <label for="q12">Delete fire_hydrant row</label><br>
+    <input type="submit" id="submit_button" value="Submit">
+  </form>
+  <script>
+    let sb = document.getElementById("submit_button");
+    sb.disabled = true;
+    let rf = document.getElementById("radio_form");
+    rf.addEventListener("change",function(){
+      sb.disabled = false;
+    });
+
+  </script>
+
+
+  <br>
+  <label>or...</label>
+  <br>
+  <label>Enter your own query:</label>
+  <form action='custom-results.php' method='GET'>
+    <input type='text' name='custom_string'>
+  </form>
+</body>
+
 </html>
