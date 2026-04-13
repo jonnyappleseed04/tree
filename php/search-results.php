@@ -15,8 +15,6 @@
     $dbc = db_connect();
 
     $selection = $_GET['query'];
-    
-    echo $selection;
     //transform selection to query
     $query = transform_selection($selection);
     $result = db_do_query($dbc,$query);
