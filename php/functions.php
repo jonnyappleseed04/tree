@@ -161,7 +161,7 @@
             "12" => "delete from fire_hydrant
                     where object_id = (select max(object_id) from fire_hydrant);"
         ];
-        echo array_key_exists($selection,$queries);
+
         if (array_key_exists($selection,$queries)){
             return $queries[$selection];
         }
