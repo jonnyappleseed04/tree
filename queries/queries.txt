@@ -100,3 +100,14 @@ values ('orange');
 use tree;
 delete from fire_hydrant
 WHERE object_id = (select max(object_id) from fire_hydrant);
+
+-- Get trees with date inventoried as 2022/05/11
+-- used for index project and currently not on website
+select *
+from tree_basic
+where date_inventoried = "2022-05-11";
+
+--index
+create index date
+on tree_basic (date_inventoried);
+

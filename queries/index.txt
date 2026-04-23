@@ -1,0 +1,16 @@
+-- Get trees with date inventoried as 2022/05/11
+-- used for index project and currently not on website
+select *
+from tree_basic
+where date_inventoried = "2022-05-11";
+
+--index
+create index date
+on tree_basic (date_inventoried);
+
+-- Original Runtime
+0.111 sec
+--Improved Runtime
+0.005 sec
+-- Speedup
+22.2
